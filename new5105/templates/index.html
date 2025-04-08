@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>CEG5105 - Image Steganography</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'encode-tab')">Encode</button>
+            <button class="tab-button" onclick="openTab(event, 'decode-tab')">Decode</button>
+        </div>
+
+        <div id="encode-tab" class="tab-content active">
+            <h2>Encode a Secret Message</h2>
+            <div class="form-group">
+                <label for="encode-image">Upload Image:</label>
+                <input type="file" id="encode-image" accept="image/*">
+            </div>
+
+            <div class="image-preview">
+                <img id="encode-preview" alt="Preview" style="display: none;">
+            </div>
+
+            <div class="form-group">
+                <label for="secret-message">Secret Message:</label>
+                <textarea id="secret-message" rows="4" placeholder="Enter your secret message here"></textarea>
+            </div>
+
+            <button id="encode-button" class="action-button">Encode Image</button>
+
+            <div id="encode-result" class="result" style="display: none;">
+                <h3>Encoded Image:</h3>
+                <div class="image-preview">
+                    <img id="encoded-image" alt="Encoded Image">
+                </div>
+                <button id="download-button" class="action-button">Download Image</button>
+            </div>
+
+            <div id="encode-error" class="error" style="display: none;"></div>
+        </div>
+
+        <div id="decode-tab" class="tab-content">
+            <h2>Decode a Secret Message</h2>
+            <div class="form-group">
+                <label for="decode-image">Upload Encoded Image:</label>
+                <input type="file" id="decode-image" accept="image/*">
+            </div>
+
+            <div class="image-preview">
+                <img id="decode-preview" alt="Preview" style="display: none;">
+            </div>
+
+            <button id="decode-button" class="action-button">Decode Image</button>
+
+            <div id="decode-result" class="result" style="display: none;">
+                <h3>Decoded Message:</h3>
+                <div class="message-box" id="decoded-message"></div>
+            </div>
+
+            <div id="decode-error" class="error" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
